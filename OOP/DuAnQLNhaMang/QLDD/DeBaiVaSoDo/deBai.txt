@@ -1,0 +1,439 @@
+ĐỀ BÀI: XÂY DỰNG HỆ THỐNG QUẢN LÝ THUÊ BAO DI ĐỘNG
+1. Bối cảnh
+
+Một công ty viễn thông muốn xây dựng một chương trình Java đơn giản để quản lý các thuê bao di động đang sử dụng dịch vụ.
+
+Trong phạm vi bài tập, hệ thống mô phỏng 3 nhà mạng:
+
+Viettel
+VinaPhone
+MobiFone
+
+Mỗi khách hàng đăng ký một số điện thoại thuộc một nhà mạng và có một số dư tài khoản để sử dụng dịch vụ gọi điện.
+
+Hệ thống cho phép quản lý thông tin thuê bao, nạp tiền, thực hiện cuộc gọi, tính cước và thống kê sử dụng.
+
+Lưu ý: Các mức cước trong bài là mức giả lập phục vụ học tập, không phải bảng giá thực tế của nhà mạng.
+
+2. Các đối tượng cần quản lý
+2.1. Nhà mạng – NhaMang
+
+Mỗi nhà mạng gồm:
+
+Mã nhà mạng
+Tên nhà mạng
+
+Ba nhà mạng ban đầu:
+
+Mã	Tên
+VT	Viettel
+VN	VinaPhone
+MB	MobiFone
+
+Lớp NhaMang cần có:
+
+Constructor
+Getter/Setter
+Phương thức hiển thị thông tin
+2.2. Cuộc gọi – CuocGoi
+
+Mỗi cuộc gọi phát sinh cần lưu:
+
+Số điện thoại nhận
+Thời lượng cuộc gọi, tính bằng phút
+Nhà mạng của số nhận
+Loại cuộc gọi
+Tiền cước
+
+Trong đó:
+
+Nếu nhà mạng người gọi = nhà mạng người nhận
+        → Nội mạng
+
+Nếu nhà mạng người gọi ≠ nhà mạng người nhận
+        → Ngoại mạng
+Mức cước giả lập
+Nội mạng:    1.000 VNĐ/phút
+Ngoại mạng:  2.000 VNĐ/phút
+
+Tiền cước được tính:
+
+Tiền cước = Thời lượng × Đơn giá
+
+Lớp CuocGoi phải có phương thức:
+
+xacDinhLoaiCuoc()
+tinhTienCuoc()
+hienThi()
+2.3. Thuê bao – ThueBao
+
+Mỗi thuê bao gồm:
+
+Họ tên chủ thuê bao
+Số điện thoại
+Nhà mạng
+Số dư tài khoản
+Danh sách các cuộc gọi đã thực hiện
+
+Một thuê bao có thể thực hiện nhiều cuộc gọi, không giới hạn cố định 2 cuộc như đề ban đầu.
+
+Ví dụ:
+
+Nguyễn Văn A
+0987654321
+Viettel
+Số dư: 200.000 VNĐ
+
+Lịch sử:
+- Gọi 0901234567 – 10 phút
+- Gọi 0912345678 – 5 phút
+- Gọi 0934567890 – 20 phút
+3. Chức năng của hệ thống
+Chức năng 1: Thêm thuê bao
+
+Cho phép nhập thông tin:
+
+Họ tên:
+Số điện thoại:
+Nhà mạng:
+Số dư ban đầu:
+
+Sau khi nhập, thuê bao được thêm vào danh sách quản lý.
+
+4. Chức năng 2: Nạp tiền
+
+Cho phép khách hàng nạp tiền vào tài khoản.
+
+Ví dụ:
+
+Số dư hiện tại: 50.000
+
+Nạp: 100.000
+
+Số dư mới: 150.000
+
+Phương thức:
+
+napTien()
+
+Không cho phép nạp số tiền <= 0.
+
+5. Chức năng 3: Thực hiện cuộc gọi
+
+Người dùng chọn một thuê bao và nhập:
+
+Số điện thoại cần gọi:
+Thời lượng:
+
+Hệ thống tự động:
+
+Bước 1
+
+Tìm nhà mạng của số điện thoại nhận.
+
+Bước 2
+
+So sánh nhà mạng:
+
+Người gọi = Người nhận
+        ↓
+     Nội mạng
+
+Người gọi ≠ Người nhận
+        ↓
+    Ngoại mạng
+Bước 3
+
+Tính tiền cước.
+
+Ví dụ:
+
+Thuê bao: Viettel
+Số gọi đến: Viettel
+Thời lượng: 10 phút
+
+→ Nội mạng
+→ 10 × 1.000
+→ 10.000 VNĐ
+6. Kiểm tra số dư
+
+Trước khi thực hiện cuộc gọi, hệ thống phải kiểm tra:
+
+Số dư >= Tiền cước
+
+Nếu đủ:
+
+Cuộc gọi thành công.
+
+Trừ tiền trong tài khoản.
+Lưu cuộc gọi vào lịch sử.
+
+Nếu không đủ:
+
+Tài khoản không đủ tiền.
+Cuộc gọi không được thực hiện.
+
+Ví dụ:
+
+Số dư: 15.000
+Tiền cuộc gọi: 20.000
+
+→ Không đủ tiền
+→ Không thực hiện cuộc gọi
+→ Không trừ tiền
+7. Chức năng 4: Xem thông tin thuê bao
+
+Cho phép nhập số điện thoại và hiển thị:
+
+Họ tên:
+Số điện thoại:
+Nhà mạng:
+Số dư hiện tại:
+Tổng số cuộc gọi:
+Tổng tiền cước đã sử dụng:
+
+Ví dụ:
+
+=================================
+THÔNG TIN THUÊ BAO
+=================================
+Họ tên: Nguyễn Văn A
+Số điện thoại: 0987654321
+Nhà mạng: Viettel
+Số dư: 85.000 VNĐ
+Số cuộc gọi: 5
+Tổng cước: 115.000 VNĐ
+8. Chức năng 5: Xem lịch sử cuộc gọi
+
+Cho phép xem toàn bộ cuộc gọi của một thuê bao.
+
+Ví dụ:
+
+=============== LỊCH SỬ CUỘC GỌI ===============
+
+1. 0901234567 | 10 phút | Nội mạng   | 10.000 VNĐ
+2. 0912345678 |  5 phút | Ngoại mạng | 10.000 VNĐ
+3. 0988888888 | 20 phút | Nội mạng   | 20.000 VNĐ
+
+Tổng cước: 40.000 VNĐ
+9. Chức năng 6: Tìm kiếm thuê bao
+
+Cho phép tìm thuê bao theo:
+
+Số điện thoại
+
+Ví dụ:
+
+Nhập số điện thoại: 0987654321
+
+Hệ thống hiển thị thông tin thuê bao.
+
+Họ tên
+
+Cho phép tìm các thuê bao có tên phù hợp.
+
+10. Chức năng 7: Thống kê
+
+Hệ thống có các chức năng thống kê:
+
+a. Số lượng thuê bao của từng nhà mạng
+
+Ví dụ:
+
+Viettel:    10 thuê bao
+VinaPhone:   7 thuê bao
+MobiFone:    5 thuê bao
+b. Thuê bao có tổng cước cao nhất
+
+Hiển thị:
+
+Họ tên:
+Số điện thoại:
+Nhà mạng:
+Tổng cước:
+c. Tổng doanh thu cước
+
+Tính tổng tiền cước của tất cả các thuê bao:
+
+Tổng doanh thu: 5.250.000 VNĐ
+11. Chức năng 8: Khuyến mãi
+
+Hệ thống kiểm tra tổng cước của từng thuê bao.
+
+Nếu:
+
+Tổng cước > 50.000 VNĐ
+
+thì hiển thị:
+
+Đủ điều kiện nhận voucher khuyến mãi 10%.
+
+Nếu không:
+
+Chưa đủ điều kiện nhận voucher.
+
+Đây là phần được phát triển từ đề bài ban đầu.
+
+12. Menu chương trình
+
+Chương trình chính có thể xây dựng menu:
+
+========================================
+     HỆ THỐNG QUẢN LÝ THUÊ BAO
+========================================
+
+1. Thêm thuê bao
+2. Nạp tiền
+3. Thực hiện cuộc gọi
+4. Xem thông tin thuê bao
+5. Xem lịch sử cuộc gọi
+6. Tìm kiếm thuê bao
+7. Thống kê theo nhà mạng
+8. Tìm thuê bao có cước cao nhất
+9. Tính tổng doanh thu cước
+10. Kiểm tra khuyến mãi
+0. Thoát
+
+========================================
+Nhập lựa chọn:
+13. Các lớp trong chương trình
+
+Project đề xuất:
+
+QuanLyThueBao
+│
+└── src
+    │
+    └── client
+        │
+        ├── NhaMang.java
+        ├── CuocGoi.java
+        ├── ThueBao.java
+        └── TestThueBao.java
+Quan hệ giữa các lớp
+                    ┌───────────────┐
+                    │    NhaMang    │
+                    ├───────────────┤
+                    │ maNhaMang     │
+                    │ tenNhaMang    │
+                    └───────┬───────┘
+                            │
+              ┌─────────────┼─────────────┐
+              ↓             ↓             ↓
+           Viettel       VinaPhone     MobiFone
+                           
+
+                    ┌───────────────┐
+                    │    ThueBao    │
+                    ├───────────────┤
+                    │ hoTen         │
+                    │ soDienThoai   │
+                    │ nhaMang       │
+                    │ soDu          │
+                    │ dsCuocGoi     │
+                    ├───────────────┤
+                    │ napTien()     │
+                    │ goiDien()     │
+                    │ tinhTongCuoc()│
+                    └───────┬───────┘
+                            │
+                         chứa nhiều
+                            │
+                            ↓
+                    ┌───────────────┐
+                    │    CuocGoi    │
+                    ├───────────────┤
+                    │ soDTNhan      │
+                    │ thoiLuong     │
+                    │ nhaMangNhan   │
+                    │ loaiCuocGoi   │
+                    │ tienCuoc      │
+                    ├───────────────┤
+                    │ tinhTienCuoc()│
+                    └───────────────┘
+14. Yêu cầu OOP
+
+Bài tập yêu cầu sinh viên áp dụng các kiến thức Java OOP:
+
+NhaMang
+Thuộc tính private
+Constructor
+Getter/Setter
+toString()
+CuocGoi
+Thuộc tính private
+Constructor
+Getter/Setter
+xacDinhLoaiCuoc()
+tinhTienCuoc()
+toString()
+ThueBao
+Thuộc tính private
+Constructor
+Getter/Setter
+napTien()
+goiDien()
+tinhTongCuoc()
+xemLichSu()
+toString()
+TestThueBao
+main()
+Menu
+Nhập dữ liệu
+Gọi các phương thức của đối tượng
+Quản lý danh sách thuê bao.
+15. Mục tiêu của bài
+
+Sau khi hoàn thành, sinh viên có thể vận dụng:
+
+Class
+   ↓
+Object
+   ↓
+Constructor
+   ↓
+Encapsulation
+   ↓
+Quan hệ giữa các đối tượng
+   ↓
+ArrayList
+   ↓
+Tìm kiếm
+   ↓
+Tính toán
+   ↓
+Menu
+Mô hình thực tế cuối cùng
+                 HỆ THỐNG NHÀ MẠNG
+                         │
+        ┌────────────────┼────────────────┐
+        ↓                ↓                ↓
+     VIETTEL          VINAPHONE        MOBIFONE
+        │                │                │
+        └────────────────┼────────────────┘
+                         ↓
+                     THUÊ BAO
+                         │
+          ┌──────────────┼──────────────┐
+          ↓              ↓              ↓
+       Nạp tiền        Gọi điện       Số dư
+                         │
+                         ↓
+                     CUỘC GỌI
+                         │
+                  ┌──────┴──────┐
+                  ↓             ↓
+               Nội mạng      Ngoại mạng
+                  │             │
+                  └──────┬──────┘
+                         ↓
+                    TÍNH CƯỚC
+                         │
+                         ↓
+                  TRỪ TIỀN TÀI KHOẢN
+                         │
+                         ↓
+                  LƯU LỊCH SỬ GỌI
+                         │
+                         ↓
+                     THỐNG KÊ
