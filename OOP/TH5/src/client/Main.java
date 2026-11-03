@@ -1,6 +1,7 @@
 package client;
 import entities.SinhVien;
 import entities.DiemHP;
+import entities.DoAn;
 import entities.HPLyThuyet;
 import entities.HPThuHanh;
 public class Main {
@@ -12,7 +13,7 @@ public class Main {
 	                new HPLyThuyet("Lap trinh Java", 3, 8, 7, 9),
 	                new HPThuHanh("Thuc hanh Java", 2, 8.5, 9, 7.5));
 
-	     dsSV[1] = new SinhVien("Tran Thi Bich Le",
+	     dsSV[1] = new SinhVien("Tran Thi Khanh Quynh",
 	                new HPThuHanh("Co so du lieu TH", 2, 9, 8, 10),
 	                new HPLyThuyet("Toan roi rac", 3, 7, 8, 8));
 
@@ -23,8 +24,11 @@ public class Main {
 	        for (int i = 0; i < dsSV.length; i++) {
 	            dsSV[i].hienThi();
 	        }
-	    }
+	        
+			
 		
+	
+}	
 
-}
+
 

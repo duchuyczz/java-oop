@@ -22,5 +22,9 @@ public abstract class DiemHP {
 	
 	
 	
+	
+	
+	
+	
 
 }

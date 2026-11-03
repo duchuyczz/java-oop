@@ -1,0 +1,20 @@
+xin chao:thán từ-lời chào-Xin chào bạn
+sach:danh từ-quyển sách-Tôi có một quyển sách
+may tinh:danh từ-máy tính-Tôi đang sử dụng máy tính
+hoc:động từ-học-Tôi học Java mỗi ngày
+lap trinh:danh từ-lập trình-Lập trình rất thú vị
+sinh vien:danh từ-sinh viên-Tôi là sinh viên
+giao vien:danh từ-giáo viên-Giáo viên đang giảng bài
+truong hoc:danh từ-trường học-Tôi đi học ở trường
+ban be:danh từ-bạn bè-Tôi đi chơi cùng bạn bè
+gia dinh:danh từ-gia đình-Gia đình của tôi rất hạnh phúc
+cong nghe:danh từ-công nghệ-Công nghệ ngày càng phát triển
+phan mem:danh từ-phần mềm-Tôi đang học phát triển phần mềm
+lap trinh vien:danh từ-lập trình viên-Lập trình viên viết chương trình
+may tinh xach tay:danh từ-máy tính xách tay-Tôi có một chiếc máy tính xách tay
+dien thoai:danh từ-điện thoại-Tôi sử dụng điện thoại mỗi ngày
+internet:danh từ-mạng Internet-Internet rất hữu ích
+du lieu:danh từ-dữ liệu-Dữ liệu được lưu trong máy tính
+chuong trinh:danh từ-chương trình-Tôi đang viết một chương trình Java
+java:danh từ-ngôn ngữ Java-Java là một ngôn ngữ lập trình
+hoc tap:động từ-học tập-Tôi luôn cố gắng học tập tốt
